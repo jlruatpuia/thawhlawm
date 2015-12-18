@@ -17,7 +17,7 @@ namespace Thawhlawm.UserControls
         {
             InitializeComponent();
             //dashboardViewer1.Dashboard = "Thawhlawm.xml";
-            dashboardViewer1.DashboardSource = Application.StartupPath + "\\Thawhlawm.xml";
+            //dashboardViewer1.DashboardSource = Application.StartupPath + "\\Thawhlawm.xml";
         }
     }
 }

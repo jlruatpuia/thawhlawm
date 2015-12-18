@@ -18,5 +18,14 @@ namespace Thawhlawm
             scc.Panel2.Controls.Clear();
             scc.Panel2.Controls.Add(h);
         }
+
+        private void nbiPuipate_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            UserControls.KohhranUpa uc = new UserControls.KohhranUpa() { Dock = DockStyle.Fill };
+            scc.Panel2.Controls.Clear();
+            scc.Panel2.Controls.Add(uc);
+            ribbonControl1.MergeRibbon(uc.ribbonControl1);
+            ribbonControl1.SelectedPage = ribbonControl1.MergedPages[0];
+        }
     }
 }
