@@ -28,18 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.dashboardViewer1 = new DevExpress.DashboardWin.DashboardViewer();
+            ((System.ComponentModel.ISupportInitialize)(this.dashboardViewer1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dashboardViewer1
+            // 
+            //this.dashboardViewer1.DashboardSource = new System.Uri("Thawhlawm.xml", System.UriKind.Absolute);
+            this.dashboardViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dashboardViewer1.Location = new System.Drawing.Point(0, 0);
+            this.dashboardViewer1.Name = "dashboardViewer1";
+            this.dashboardViewer1.PrintingOptions.FontInfo.GdiCharSet = ((byte)(0));
+            this.dashboardViewer1.PrintingOptions.FontInfo.Name = null;
+            this.dashboardViewer1.Size = new System.Drawing.Size(751, 511);
+            this.dashboardViewer1.TabIndex = 0;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dashboardViewer1);
             this.Name = "Home";
             this.Size = new System.Drawing.Size(751, 511);
+            ((System.ComponentModel.ISupportInitialize)(this.dashboardViewer1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private DevExpress.DashboardWin.DashboardViewer dashboardViewer1;
     }
 }

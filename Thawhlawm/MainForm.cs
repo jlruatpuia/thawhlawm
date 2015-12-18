@@ -14,6 +14,9 @@ namespace Thawhlawm
         public MainForm()
         {
             InitializeComponent();
+            UserControls.Home h = new UserControls.Home() { Dock = DockStyle.Fill };
+            scc.Panel2.Controls.Clear();
+            scc.Panel2.Controls.Add(h);
         }
     }
 }
