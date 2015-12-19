@@ -54,5 +54,20 @@ namespace Thawhlawm.UserCodes
             finally { cm.Close(); }
             return val;
         }
+
+        public bool Delete(int ID)
+        {
+            bool val = false;
+            SQLiteCommand cmd = new SQLiteCommand("DELETE FROM KohhranUpa WHERE ID=" + ID, cm);
+            try
+            {
+                cm.Open();
+                cmd.ExecuteNonQuery();
+                val = true;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); val = false; }
+            finally { cm.Close(); }
+            return val;
+        }
     }
 }
