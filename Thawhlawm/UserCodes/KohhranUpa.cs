@@ -12,7 +12,7 @@ namespace Thawhlawm.UserCodes
 
         public DataTable SelectAll()
         {
-            SQLiteCommand cmd = new SQLiteCommand("SELECT ID, Nihna, Hming, PhoneNo FROM KohhranUpa", cm);
+            SQLiteCommand cmd = new SQLiteCommand("SELECT ID, Nihna || ' ' || Hming AS HmingPum, PhoneNo FROM KohhranUpa", cm);
             SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -33,6 +33,24 @@ namespace Thawhlawm.UserCodes
                 val = true;
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); val = false; }
+            finally { cm.Close(); }
+            return val;
+        }
+
+        public bool Update(int ID, string Nihna, string Hming, string Phone)
+        {
+            bool val = false;
+            SQLiteCommand cmd = new SQLiteCommand("UPDATE KohhranUpa SET Nihna=@NHN, Hming=@HMG, PhoneNo=@PHN WHERE ID=" + ID, cm);
+            cmd.Parameters.AddWithValue("@NHN", Nihna);
+            cmd.Parameters.AddWithValue("@HMG", Hming);
+            cmd.Parameters.AddWithValue("@PHN", Phone);
+            try
+            {
+                cm.Open();
+                cmd.ExecuteNonQuery();
+                val = true;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); val = false; }
             finally { cm.Close(); }
             return val;
         }
