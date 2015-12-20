@@ -152,5 +152,15 @@ namespace Thawhlawm.UserControls
                 bNext.Enabled = true;
             }
         }
+
+        private void bDel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int ID = Convert.ToInt32(grv.GetFocusedRowCellValue(colID));
+            if(MessageBox.Show("Do you really want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (uc.Delete(ID))
+                    MessageBox.Show("Record deleted successfully!");
+            }
+        }
     }
 }

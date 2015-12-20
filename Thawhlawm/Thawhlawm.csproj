@@ -131,11 +131,23 @@
     <Compile Include="UserControls\KohhranUpa.Designer.cs">
       <DependentUpon>KohhranUpa.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Thawhtu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Thawhtu.Designer.cs">
+      <DependentUpon>Thawhtu.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\KohhranUpa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserForms\KohhranUpa.Designer.cs">
       <DependentUpon>KohhranUpa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\Thawhtu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\Thawhtu.Designer.cs">
+      <DependentUpon>Thawhtu.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -159,8 +171,14 @@
     <EmbeddedResource Include="UserControls\KohhranUpa.resx">
       <DependentUpon>KohhranUpa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Thawhtu.resx">
+      <DependentUpon>Thawhtu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForms\KohhranUpa.resx">
       <DependentUpon>KohhranUpa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\Thawhtu.resx">
+      <DependentUpon>Thawhtu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
