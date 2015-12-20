@@ -1,4 +1,7 @@
 ﻿using System;
+using DevExpress.XtraReports;
+using DevExpress.XtraReports.UI;
+using System.Windows.Forms;
 
 namespace Thawhlawm.UserControls
 {
@@ -6,6 +9,7 @@ namespace Thawhlawm.UserControls
     {
         UserCodes.KohhranUpa uc = new UserCodes.KohhranUpa();
         UserForms.KohhranUpa uf = new UserForms.KohhranUpa();
+        
 
         void FillData()
         {
@@ -56,6 +60,97 @@ namespace Thawhlawm.UserControls
                 grv.OptionsFind.AlwaysVisible = true;
             else
                 grv.OptionsFind.AlwaysVisible = false;
+        }
+
+        private void bFirst_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            grv.MoveFirst();
+        }
+
+        private void bPrev_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            grv.MovePrev();
+        }
+
+        private void bNext_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            grv.MoveNext();
+        }
+
+        private void bLast_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            grv.MoveLast();
+        }
+
+        XtraReport rpt()
+        {
+            Reports.KohhranUpa rp = new Reports.KohhranUpa() { DataSource = uc.SelectAll() };
+            rp.lblHMG.DataBindings.Add("Text", null, "HmingPum");
+            rp.lblPHN.DataBindings.Add("Text", null, "PhoneNo");
+            return rp;
+        }
+
+        private void bPreview_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rpt().ShowPreviewDialog();
+            //rp.ShowPreviewDialog();
+            //rp.lbHming.            
+        }
+
+        private void xPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "PDF File|*.pdf|All Files|*.*" };
+            if(sfd.ShowDialog() == DialogResult.OK)
+            {
+                rpt().ExportToPdf(sfd.FileName);
+            }
+        }
+
+        private void xXLS_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel 2003 File|*.xls|All Files|*.*" };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                rpt().ExportToXls(sfd.FileName);
+            }
+        }
+
+        private void xXLSX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel 2007 File|*.xlsx|All Files|*.*" };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                rpt().ExportToXlsx(sfd.FileName);
+            }
+        }
+
+        private void grv_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void grv_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (grv.FocusedRowHandle == 0)
+            {
+                bFirst.Enabled = false;
+                bPrev.Enabled = false;
+            }
+            else
+            {
+                bFirst.Enabled = true;
+                bPrev.Enabled = true;
+            }
+            if (grv.FocusedRowHandle == grv.RowCount - 1)
+            {
+                bLast.Enabled = false;
+                bNext.Enabled = false;
+            }
+            else
+            {
+                bLast.Enabled = true;
+                bNext.Enabled = true;
+            }
         }
     }
 }
